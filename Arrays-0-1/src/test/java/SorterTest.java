@@ -15,7 +15,8 @@ public class SorterTest {
      */
     public static Stream<Arguments> sorters() {
 //      ToDo:
-      return Stream.of(Arguments.of(new BubleSorter()));
+      return Stream.of(Arguments.of(new InsertionSorter()),
+              Arguments.of(new BubleSorter()));
 
     }
 

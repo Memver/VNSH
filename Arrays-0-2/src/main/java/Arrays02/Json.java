@@ -1,6 +1,6 @@
 package Arrays02;
 
-public class Plane {
+public class Json implements ChangedJson{
     private int time;
     private int[] array;
 

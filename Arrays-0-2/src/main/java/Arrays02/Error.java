@@ -1,6 +1,6 @@
 package Arrays02;
 
-public class Error {
+public class Error implements ChangedJson{
     private String errorMessage;
 
     public String getErrorMessage() {

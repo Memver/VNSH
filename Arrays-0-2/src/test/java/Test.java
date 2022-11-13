@@ -1,4 +1,4 @@
-import Arrays02.Error;
+import Arrays02.ChangedJson;
 import Arrays02.JsonChanger;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -6,13 +6,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class Test {
     public static void main(String[] args) {
         ObjectMapper mapper = new ObjectMapper();
-        JsonChanger namik = new JsonChanger();
-        Error error = namik.jsonChanger();
+        JsonChanger changer = new JsonChanger();
+        ChangedJson json = changer.jsonChanger();
 
         // Проверка на возврат ошибки
-        if (error != null) {
+        if (json != null) {
             try {
-                String result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(error);
+                String result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json);
                 System.out.println(result);
             } catch (JsonProcessingException e) {
                 throw new RuntimeException(e);

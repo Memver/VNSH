@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.Date;
 
 public class JsonChanger {
-    public Error jsonChanger() {
+    public ChangedJson jsonChanger() {
         // Запись текущего времени
         Date md1 = new Date();
         int time1 = (int) md1.getTime();
@@ -24,7 +24,7 @@ public class JsonChanger {
                 BubbleSorter array = new BubbleSorter();
                 arr = array.bubbleSorter(arr);
             }
-            if (helicopter.getAlgorithm().equals("insertion")) {
+            else if (helicopter.getAlgorithm().equals("insertion")) {
                 InsertionSorter array = new InsertionSorter();
                 arr = array.insertionSorter(arr);
             }
@@ -32,12 +32,12 @@ public class JsonChanger {
             Date md2 = new Date();
             int time2 = (int) md2.getTime();
             int time = time2 - time1;
-            Plane plane = new Plane();
-            plane.setTime(time);
-            plane.setArray(arr);
+            Json json = new Json();
+            json.setTime(time);
+            json.setArray(arr);
+
             // Вывод прошедшего времени и отсортированного массива
-            String result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(plane);
-            System.out.println(result);
+            return json;
 
         } catch (NullPointerException e) {
             Error error = new Error();
@@ -47,6 +47,5 @@ public class JsonChanger {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return null;
     }
 }

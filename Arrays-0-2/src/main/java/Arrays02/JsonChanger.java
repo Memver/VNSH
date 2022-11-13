@@ -1,7 +1,8 @@
 package Arrays02;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.File;
+
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Date;
 
@@ -16,7 +17,7 @@ public class JsonChanger {
         try {
             InputJson inputJson;
             // Запись из файла в объект
-            inputJson = mapper.readValue(new File("/Files/File.json"), InputJson.class);
+            inputJson = mapper.readValue(new FileReader("Arrays-0-2/src/main/resources/File.json"), InputJson.class);
             // Запись из объекта в массив
             int[] arr = inputJson.getValues();
             // Сортировка значений в массиве

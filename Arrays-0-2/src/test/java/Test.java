@@ -1,12 +1,12 @@
 import Arrays02.Error;
-import Arrays02.Name;
+import Arrays02.JsonChanger;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Test {
     public static void main(String[] args) {
         ObjectMapper mapper = new ObjectMapper();
-        Name namik = new Name();
+        JsonChanger namik = new JsonChanger();
         Error error = namik.name1();
 
         // Проверка на возврат ошибки

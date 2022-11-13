@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>Arrays-0-1</artifactId>
+    <groupId>Arrays-0-2</groupId>
+    <artifactId>Arrays-0-2</artifactId>
 
 </project>

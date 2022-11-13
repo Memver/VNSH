@@ -14,17 +14,17 @@ public class JsonChanger {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-            Helicopter helicopter;
+            InputJson inputJson;
             // Запись из файла в объект
-            helicopter = mapper.readValue(new File("/Files/File.json"), Helicopter.class);
+            inputJson = mapper.readValue(new File("/Files/File.json"), InputJson.class);
             // Запись из объекта в массив
-            int[] arr = helicopter.getValues();
+            int[] arr = inputJson.getValues();
             // Сортировка значений в массиве
-            if (helicopter.getAlgorithm().equals("bubble")) {
+            if (inputJson.getAlgorithm().equals("bubble")) {
                 BubbleSorter array = new BubbleSorter();
                 arr = array.bubbleSorter(arr);
             }
-            else if (helicopter.getAlgorithm().equals("insertion")) {
+            else if (inputJson.getAlgorithm().equals("insertion")) {
                 InsertionSorter array = new InsertionSorter();
                 arr = array.insertionSorter(arr);
             }

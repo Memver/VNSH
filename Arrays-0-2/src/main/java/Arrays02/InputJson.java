@@ -1,6 +1,6 @@
 package Arrays02;
 
-public class Helicopter {
+public class InputJson {
     private String algorithm;
     private int[] values;
 

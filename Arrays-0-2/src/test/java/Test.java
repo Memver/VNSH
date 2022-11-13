@@ -7,7 +7,7 @@ public class Test {
     public static void main(String[] args) {
         ObjectMapper mapper = new ObjectMapper();
         JsonChanger namik = new JsonChanger();
-        Error error = namik.name1();
+        Error error = namik.jsonChanger();
 
         // Проверка на возврат ошибки
         if (error != null) {

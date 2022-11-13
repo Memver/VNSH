@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.Date;
 
 public class JsonChanger {
-    public Error name1() {
+    public Error jsonChanger() {
         // Запись текущего времени
         Date md1 = new Date();
         int time1 = (int) md1.getTime();

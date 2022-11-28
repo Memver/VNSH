@@ -4,13 +4,23 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
          http://xmlns.jcp.org/xml/ns/javaee/webapp_4_0.xsd" version="4.0">
     <servlet>
-        <servlet-name>Servlet</servlet-name>
+        <servlet-name>PingServlet</servlet-name>
         <servlet-class>api.PingServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>Servlet</servlet-name>
+        <servlet-name>PingServlet</servlet-name>
         <url-pattern>/ping</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SortingServlet</servlet-name>
+        <servlet-class>api.SortingServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SortingServlet</servlet-name>
+        <url-pattern>/sorting</url-pattern>
     </servlet-mapping>
 
 </web-app>

@@ -1,5 +1,6 @@
 package api;
 
+import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.servlet.ServletException;
@@ -23,15 +24,24 @@ public class SortingServlet extends HttpServlet {
             algorithm = "bubble";
         }
 
+
+
         //400
+        Json inputJson;
+        try{
+            // Запись из запроса в json объект
+            inputJson = mapper.readValue(req.getInputStream(), Json.class);
+        }catch (DatabindException ex){
+            resp.setStatus(400);
+            mapper.writeValue(resp.getWriter(), Map.of("errorMessage", "Array is null"));
+            return;
+        }
+
         if(!req.getContentType().equals("application/json")){
             resp.setStatus(400);
             mapper.writeValue(resp.getWriter(), Map.of("errorMessage", "Array is null"));
             return;
         }
-        // Запись из запроса в json объект
-        Json inputJson = mapper.readValue(req.getInputStream(), Json.class);
-
         if (inputJson == null || inputJson.getValues() == null) {
             resp.setStatus(400);
             mapper.writeValue(resp.getWriter(), Map.of("errorMessage", "Array is null"));

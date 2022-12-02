@@ -24,22 +24,27 @@ public class SortingServlet extends HttpServlet {
             algorithm = "bubble";
         }
 
-
+        //404
+        if(!algorithm.equals("bubble") & !algorithm.equals("insertion")){
+            resp.setStatus(404);
+            mapper.writeValue(resp.getWriter(), Map.of("errorMessage", "algorithm not found"));
+            return;
+        }
 
         //400
+        if(!req.getContentType().equals("application/json")){
+            resp.setStatus(400);
+            mapper.writeValue(resp.getWriter(), Map.of("error", "Expected " + "application/json"));
+            return;
+        }
+
         Json inputJson;
         try{
             // Запись из запроса в json объект
             inputJson = mapper.readValue(req.getInputStream(), Json.class);
         }catch (DatabindException ex){
             resp.setStatus(400);
-            mapper.writeValue(resp.getWriter(), Map.of("errorMessage", "Array is null"));
-            return;
-        }
-
-        if(!req.getContentType().equals("application/json")){
-            resp.setStatus(400);
-            mapper.writeValue(resp.getWriter(), Map.of("errorMessage", "Array is null"));
+            mapper.writeValue(resp.getWriter(), Map.of("errorMessage", "Bad json"));
             return;
         }
         if (inputJson == null || inputJson.getValues() == null) {
@@ -48,12 +53,6 @@ public class SortingServlet extends HttpServlet {
             return;
         }
 
-        //404
-        if(!algorithm.equals("bubble") & !algorithm.equals("insertion")){
-            resp.setStatus(404);
-            mapper.writeValue(resp.getWriter(), Map.of("errorMessage", "Array is null"));
-            return;
-        }
 
         //200
         resp.setStatus(200);
@@ -80,8 +79,6 @@ public class SortingServlet extends HttpServlet {
         inputJson.setTime(time);
         inputJson.setValues(arr);
 
-        // Преобразование json объекта в строку
-        String result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(inputJson);
-        mapper.writeValue(resp.getOutputStream(), result);
+        mapper.writeValue(resp.getOutputStream(), new Json(inputJson.getTime(), inputJson.getValues()));
     }
 }

@@ -9,7 +9,7 @@ public class PingServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        resp.setContentType("text/plane");
+        resp.setContentType("text/plain");
         resp.getWriter().println("pong");
     }
 }
